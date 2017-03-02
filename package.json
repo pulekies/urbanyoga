@@ -1,0 +1,22 @@
+{
+  "name": "urbanyoga",
+  "version": "1.0.0",
+  "description": "A mockup of the urbanyoga website for MindBody",
+  "main": "urbanyoga.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulekies/urbanyoga.git"
+  },
+  "author": "Andrew Kies",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulekies/urbanyoga/issues"
+  },
+  "homepage": "https://github.com/pulekies/urbanyoga#readme",
+  "dependencies": {
+    "angular": "^1.5.10"
+  }
+}

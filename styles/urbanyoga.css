@@ -6,6 +6,7 @@ html, body {
 body {  
     position: relative;
     background-color: #F2F2EC;  
+    background-color: lightgray; 
     background-position:center;
     background-attachment: fixed;
 }

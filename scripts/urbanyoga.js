@@ -4,10 +4,10 @@
 var app = angular.module('UrbanYogaApp', []);
 
 app.controller('UrbanYogaController', UrbanYogaController);
-UrbanYogaController.$inject = ['$scope', '$filter'];
+UrbanYogaController.$inject = ['$scope'];
 
 
-function UrbanYogaController($scope, $filter) {
+function UrbanYogaController($scope) {
   // TODO: This tab solution is probably not scalable. 
   // It was implemented to quickly prototype having only two sets of tabs. 
   $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes. 

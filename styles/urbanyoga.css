@@ -13,11 +13,22 @@ body {
 
 .site-header {
     background-color: #ecf7f2;
+    box-shadow: inset 0 -6px 6px -6px #9bc58a;
 }
 
-ul { 
-    border: thin gray solid;
+header {
+    padding: 20px;
+    margin: 0;
+    background-color: #ffffff;
+    display: block;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px -2px darkgrey;
 }
+
+header h1 {
+    margin: 0;
+}
+
 
 section {
     border: thin black solid;
@@ -29,6 +40,87 @@ section {
 
 tr {
     text-align: left;
+}
+
+* {
+    font-family: lato;
+}
+
+.menubar-container {
+    display: block;
+
+}
+
+.menubar {
+    margin: 0;
+    background-color: #ffffff;
+    display: block;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px -2px darkgrey;
+}
+
+.navbar {
+    background: transparent;
+    padding-left: 200px; /* allow space for logo*/
+    float: right;
+    box-shadow: none;
+}
+
+.navbar-container {
+    position: absolute;
+    top: 49px;
+    clear:both;
+    background: transparent;
+    width:100%;
+    height: 45px;
+    display: block;
+}
+
+.menubar li {
+    border-bottom: none;
+    padding: 10px;
+    margin: 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.navbar li {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top-color: #d4e2e6;
+    background: #fbfbfb;
+    text-decoration: none;
+    box-shadow: inset 0 0 4px darkgrey;
+}
+
+.navbar li a, .navbar li a:visited {
+    color: #808080;
+    text-decoration: none;
+}
+
+.menubar li a {
+    text-decoration: none;
+}
+
+.menubar li a, .menubar li a:visited {
+    color: #808080;
+}
+
+.menubar li.active {
+    font-weight: bold;
+}
+
+.navbar li.active {
+    border: thin darkgray solid;
+    border-bottom: none;
+    border-color: darkgray;
+    background: #ffffff;
+    padding-top: 15px;
+	margin: 0 0 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    box-shadow: none;
 }
 
 .add-button-container {

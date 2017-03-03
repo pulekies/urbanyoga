@@ -29,6 +29,8 @@
                         <a href ng-click="setActiveTabPage(0, 5)">Client Home</a>
                     </li><li ng-class="{ active: isTabPageActive(0, 6) }">
                         <a href ng-click="setActiveTabPage(0, 6)">Retail</a>
+                    </li><li class="icon">
+                        <a href ng-click="toggleResponsiveNav()">&#9776;</a>
                     </li>
                 </ul>
             </div>
@@ -328,27 +330,27 @@
                                     <a href ng-click="toggleCardDetails(2)">{{ tileDetailsExpanded[2] ? "less" : "more" }}</a>
                                 </div>
                                 <section class="overview-details">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>All Programs</th>
-                                            <th>Monthly Sales</th>
-                                            <th>Monthly Attendance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Open Practice<br><a href="">more</a></td>
-                                            <td>$572.00</td>
-                                            <td>276 <span>visits</span></td>
-                                        </tr><tr>
-                                            <td>Yoga Videos<br><a href="">more</a></td>
-                                            <td>$391.32</td>
-                                            <td>82 <span>views</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>  
-                            </section>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>All Programs</th>
+                                                <th>Monthly Sales</th>
+                                                <th>Monthly Attendance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Open Practice<br><a href="">more</a></td>
+                                                <td>$572.00</td>
+                                                <td>276 <span>visits</span></td>
+                                            </tr><tr>
+                                                <td>Yoga Videos<br><a href="">more</a></td>
+                                                <td>$391.32</td>
+                                                <td>82 <span>views</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>  
+                                </section>
                             </section>
                         </div>
                         <div ng-show="isTabPageActive(1, 2)">
@@ -362,37 +364,37 @@
                     </div>
                 </div>
                 <div ng-show="isTabPageActive(0, 1)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Sign In</h1>
                     </header>
                     <p>[Sign in]</p>
                 </div>
                 <div ng-show="isTabPageActive(0, 2)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Classes</h1>
                     </header>
                     <p>[Classes]</p>
                 </div>
                 <div ng-show="isTabPageActive(0, 3)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Workshops</h1>
                     </header>
                     <p>[Workshops]</p>
                 </div>
                 <div ng-show="isTabPageActive(0, 4)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Appointments</h1>
                     </header>
                     <p>[Appointments]</p>
                 </div>
                 <div ng-show="isTabPageActive(0, 5)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Client Home</h1>
                     </header>
                     <p>[Client Home]</p>
                 </div>
                 <div ng-show="isTabPageActive(0, 6)">
-                    <header>
+                    <header class="in-progress-header">
                         <h1>Retail</h1>
                     </header>
                     <p>[Retail]</p>

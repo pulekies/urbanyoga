@@ -33,6 +33,15 @@ function UrbanYogaController($scope) {
     $scope.toggleCardDetails = function(cardId){
       $scope.tileDetailsExpanded[cardId] = !$scope.tileDetailsExpanded[cardId];
     };
-};
+
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    $scope.toggleResponsiveNav = function () {
+        // TODO: this is a quick hack. Replace. 
+        var x = document.getElementsByClassName("navbar");
+        if(x[0]) {
+          x[0].classList.toggle("responsive");
+        }
+    }
+  };
 
 })();

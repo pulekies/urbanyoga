@@ -15,13 +15,17 @@ body {
 }
 
 .site-header {
+    margin: 0;
+    padding: 20px;
+    display: block;
     background-color: #ecf7f2;
-    box-shadow: inset 0 -6px 6px -6px #9bc58a;
+    box-shadow: inset 0 -6px 6px -6px #9bc58a;     
 }
 
-header {
+header.in-progress-header {
     padding: 20px;
     margin: 0;
+    height: 55px;
     background-color: #ffffff;
     display: block;
     box-sizing: border-box;
@@ -108,6 +112,41 @@ tr {
     color: #37444e;
 }
 
+.navbar li.icon {
+    display: none;
+}
+
+/* When the screen is small, hide all list items, except for the active one. Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:980px) {
+  ul.navbar li:not(.active) { display: none; }
+  ul.navbar li.icon {
+    display: inline-block;
+  }
+}
+
+/* The "responsive" class is added to the topnav when the user clicks on the icon. */
+@media screen and (max-width:980px) {
+  ul.navbar.responsive {position: relative;}
+  ul.navbar.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.navbar.responsive li {
+    float: none;
+    display: block;
+  }
+  ul.navbar.responsive li a {
+    display: block;
+    text-align: left;
+  }
+
+  ul.navbar.responsive li:first-child {
+    margin-top: 40px;
+  }
+
+}
+
 .menubar li a {
     text-decoration: none;
 }
@@ -116,7 +155,7 @@ tr {
     font-weight: bold;
 }
 
-.navbar li.active {
+.navbar:not(.responsive) li.active {
     border: thin darkgray solid;
     border-bottom: none;
     border-color: darkgray;
@@ -127,6 +166,10 @@ tr {
     -webkit-border-radius: 6px 6px 0 0;
     border-radius: 6px 6px 0 0;
     box-shadow: none;
+}
+
+.tab-content {
+    padding-top: 20px;
 }
 
 .add-button-container {
@@ -372,6 +415,7 @@ tr {
     color: #92927c;
     border-bottom: thin solid #c3c1b0;
     padding-bottom: 4px;
+    vertical-align: bottom;
 }
 
 .overview-details tr:nth-child(1) td {

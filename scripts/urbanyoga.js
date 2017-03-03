@@ -10,7 +10,8 @@ UrbanYogaController.$inject = ['$scope'];
 function UrbanYogaController($scope) {
   // TODO: This tab solution is probably not scalable. 
   // It was implemented to quickly prototype having only two sets of tabs. 
-  $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes. 
+  $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes.
+  $scope.tileDetailsExpanded = { 0:true };
 
     // Set a new tabpage to be active. 
     $scope.setActiveTabPage = function(tabControlId, tabIndex){
@@ -26,6 +27,11 @@ function UrbanYogaController($scope) {
       }
 
       return $scope.activeTabs[tabControlId] === tabIndex;
+    };
+
+    // Toggle a card's details open/closed
+    $scope.toggleCardDetails = function(cardId){
+      $scope.tileDetailsExpanded[cardId] = !$scope.tileDetailsExpanded[cardId];
     };
 };
 

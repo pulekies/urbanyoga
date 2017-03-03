@@ -50,49 +50,51 @@
                         </ul>
                     </div>
                     <div>
-                        <div ng-show="isTabPageActive(1, 0)">
+                        <div class="tab-content" ng-show="isTabPageActive(1, 0)">
                             <h1>Dashboard</h1>
                             <p>[Dashboard]</p>
                         </div>
-                        <div ng-show="isTabPageActive(1, 1)">
-                            <h1>Business Overview</h1>
-                            <section>
+                        <div class="tab-content" ng-show="isTabPageActive(1, 1)">
+                            <section class="sidebar">
                                 <div class="add-button-container">
                                     <button class="add-button">
                                         <image src="./assets/plus_icon.png" alt="Logo">
                                     </button>
                                     New Program
                                 </div>
-                            </section>
-                            <section>
-                                <div class="overview-card">
-                                    <h3>Yoga Privates</h3>
-                                    <button>
-                                        <image src="./assets/pencil_icons.png" alt="Edit">
-                                    </button>
+                            </section><section class="main-content">
+                                <div class="dashboard-tile">
+                                    <header>
+                                        <span class="card-header">Yoga Classes</span>
+                                        <button>
+                                            <image src="./assets/pencil_icons.png" alt="Edit">
+                                        </button>
+                                        <div class="clear-helper"></div>
+                                    </header>                                    
                                     <figure>
                                         <figcaption>Sales by month</figcaption>
                                         <img src="./assets/graph.png" alt="Graph">
                                     </figure>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Total Monthly</th>
-                                                <th>Current</th>
-                                                <th>1 - Year</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sales</td>
-                                                <td>$23,483</td>
-                                                <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href ng-click="">more</a>
-                                    <table>
+                                    <div class="summary-table-container">
+                                        <table class="summary-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Total Monthly</th>
+                                                    <th>Current</th>
+                                                    <th>1 - Year</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sales</td>
+                                                    <td>$23,483</td>
+                                                    <td>
+                                                        <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>  
+                                    </div>                                
+                                    <table ng-show="tileDetailsExpanded[0]" class="details-table">
                                         <thead>
                                             <tr>
                                                 <th>Price Name</th>
@@ -103,37 +105,250 @@
                                         <tbody>
                                             <tr>
                                                 <td>Monthly unlimited</td>
-                                                <td>Student 1 month</td>
+                                                <td>$4,260</td>
                                                 <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>Monthly unlimited</td>
-                                                <td>Student 1 month</td>
+                                                <td>Student 1 month pass</td>
+                                                <td>$1,750</td>
                                                 <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>Monthly unlimited</td>
-                                                <td>Student 1 month</td>
+                                                <td>Single Visit</td>
+                                                <td>$560</td>
                                                 <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
                                             </tr>
                                             <tr>
-                                                <td>Monthly unlimited</td>
-                                                <td>Student 1 month</td>
+                                                <td>10 class pass</td>
+                                                <td>$475</td>
                                                 <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
                                             </tr>
                                             <tr>
-                                                <td>Monthly unlimited</td>
-                                                <td>Student 1 month</td>
+                                                <td>Student Single pass</td>
+                                                <td>$445</td>
                                                 <td>
-                                                    <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>20 class pass</td>
+                                                <td>$230</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5 class pass</td>
+                                                <td>$520</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <a href ng-click="toggleCardDetails(0)">{{ tileDetailsExpanded[0] ? "less" : "more" }}</a>
                                 </div>
+                                <div class="dashboard-tile">
+                                    <header>
+                                        <span class="card-header">Yoga Privates</span>
+                                        <button>
+                                            <image src="./assets/pencil_icons.png" alt="Edit">
+                                        </button>
+                                        <div class="clear-helper"></div>
+                                    </header>                                    
+                                    <figure>
+                                        <figcaption>Sales by month</figcaption>
+                                        <img src="./assets/graph.png" alt="Graph">
+                                    </figure>
+                                    <div class="summary-table-container">
+                                        <table class="summary-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Total Monthly</th>
+                                                    <th>Current</th>
+                                                    <th>1 - Year</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sales</td>
+                                                    <td>$23,483</td>
+                                                    <td>
+                                                        <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>  
+                                    </div>                                
+                                    <table ng-show="tileDetailsExpanded[1]" class="details-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Price Name</th>
+                                                <th>Current</th>
+                                                <th>1 - Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Monthly unlimited</td>
+                                                <td>$4,260</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Student 1 month pass</td>
+                                                <td>$1,750</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Single Visit</td>
+                                                <td>$560</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>10 class pass</td>
+                                                <td>$475</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Student Single pass</td>
+                                                <td>$445</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>20 class pass</td>
+                                                <td>$230</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5 class pass</td>
+                                                <td>$520</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href ng-click="toggleCardDetails(1)">{{ tileDetailsExpanded[1] ? "less" : "more" }}</a>
+                                </div>
+                                <div class="dashboard-tile">
+                                    <header>
+                                        <span class="card-header">Yoga Duets</span>
+                                        <button>
+                                            <image src="./assets/pencil_icons.png" alt="Edit">
+                                        </button>
+                                        <div class="clear-helper"></div>
+                                    </header>                                    
+                                    <figure>
+                                        <figcaption>Sales by month</figcaption>
+                                        <img src="./assets/graph.png" alt="Graph">
+                                    </figure>
+                                    <div class="summary-table-container">
+                                        <table class="summary-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Total Monthly</th>
+                                                    <th>Current</th>
+                                                    <th>1 - Year</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sales</td>
+                                                    <td>$23,483</td>
+                                                    <td>
+                                                        <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>  
+                                    </div>                                
+                                    <table ng-show="tileDetailsExpanded[2]" class="details-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Price Name</th>
+                                                <th>Current</th>
+                                                <th>1 - Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Monthly unlimited</td>
+                                                <td>$4,260</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Student 1 month pass</td>
+                                                <td>$1,750</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Single Visit</td>
+                                                <td>$560</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>10 class pass</td>
+                                                <td>$475</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Student Single pass</td>
+                                                <td>$445</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>20 class pass</td>
+                                                <td>$230</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5 class pass</td>
+                                                <td>$520</td>
+                                                <td>
+                                                    <img src="./assets/spark_lines.png" alt="Spark line"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href ng-click="toggleCardDetails(2)">{{ tileDetailsExpanded[2] ? "less" : "more" }}</a>
+                                </div>
+                                <section class="overview-details">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>All Programs</th>
+                                            <th>Monthly Sales</th>
+                                            <th>Monthly Attendance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Open Practice<br><a href="">more</a></td>
+                                            <td>$572.00</td>
+                                            <td>276 <span>visits</span></td>
+                                        </tr><tr>
+                                            <td>Yoga Videos<br><a href="">more</a></td>
+                                            <td>$391.32</td>
+                                            <td>82 <span>views</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>  
+                            </section>
                             </section>
                         </div>
                         <div ng-show="isTabPageActive(1, 2)">

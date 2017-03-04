@@ -26,6 +26,10 @@
         $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes.
         $scope.tileDetailsExpanded = { 0: true };
         $scope.navBarOpen = false;
+        $scope.dashboardTiles = [ 
+          { id: 0, title: "Yoga Classes"}, 
+          { id: 1, title: "Yoga Privates"}, 
+          { id: 2, title: "Yoga Duets"}];
 
         // Set a new tabpage to be active. 
         $scope.setActiveTabPage = function (tabControlId, tabIndex) {

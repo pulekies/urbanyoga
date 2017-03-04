@@ -4,28 +4,36 @@
     var app = angular.module('UrbanYogaApp', ['ngMaterial']);
 
     app.config(function ($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-          .primaryPalette('light-green')
-          .accentPalette('blue-grey');
-    });
+      // Extend light-green palette
+      var customLightGreen = $mdThemingProvider.extendPalette('light-green', {
+        'A100': '#ecf7f2',
+        '800' : '#5f6865',
+        '300': '#bad69d',
+        '500': '#709582'
+      });
+
+      // Register the new color palette map with the name <code>neonRed</code>
+      $mdThemingProvider.definePalette('custom-light-green', customLightGreen);
+            $mdThemingProvider.theme('default')
+              .primaryPalette('custom-light-green')
+              .accentPalette('blue-grey');
+        });
 
     app.controller('UrbanYogaController', UrbanYogaController);
     UrbanYogaController.$inject = ['$scope', '$mdDialog'];
 
     function UrbanYogaController($scope, $mdDialog) {
-        // TODO: This tab solution is probably not scalable. 
-        // It was implemented to quickly prototype having only two sets of tabs. 
         $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes.
         $scope.tileDetailsExpanded = { 0: true };
+        $scope.navBarOpen = false;
 
         // Set a new tabpage to be active. 
         $scope.setActiveTabPage = function (tabControlId, tabIndex) {
             $scope.activeTabs[tabControlId] = tabIndex;
+            $scope.navBarOpen = false; // close the navbar if it is open
         };
 
-        // Check if a tabpage is active. 
-        // If no tabpages are active, sets the first one to be active
-        // Note that tab numbers are 1 based. 
+        // Check if a tabpage is active. If none active, set the first one to be active
         $scope.isTabPageActive = function (tabControlId, tabIndex) {
             if ($scope.activeTabs[tabControlId] === undefined) {
                 $scope.activeTabs[tabControlId] = 0;
@@ -39,13 +47,9 @@
             $scope.tileDetailsExpanded[cardId] = !$scope.tileDetailsExpanded[cardId];
         };
 
-        /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+        // Toggle the responsive navbar open/close state.  
         $scope.toggleResponsiveNav = function () {
-            // TODO: this is a quick hack. Replace. 
-            var x = document.getElementsByClassName("navbar");
-            if (x[0]) {
-                x[0].classList.toggle("responsive");
-            }
+            $scope.navBarOpen = !$scope.navBarOpen;
         }
 
         $scope.showAdvanced = function (ev) {

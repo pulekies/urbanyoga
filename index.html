@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 
     <link rel="stylesheet" type="text/css" href="./styles/urbanyoga.css">
     <title>Urban Yoga</title>
 </head>
 <body ng-cloak="" ng-app="UrbanYogaApp">
-    <header class='site-header'>
+    <header class='site-header md-hue-3'>
         <image src="./assets/logo.png" alt="Logo">
     </header>
 
     <div ng-controller="UrbanYogaController">
         <div>
             <div class='menubar-container navbar-container'>
-                <ul class='menubar navbar'>
+                <ul class='menubar navbar' ng-class="{ responsive: navBarOpen }">
                     <li ng-class="{ active: isTabPageActive(0, 0) }">
                         <a href ng-click="setActiveTabPage(0, 0)">Dashboard</a>
                     </li><li ng-class="{ active: isTabPageActive(0, 1) }">
@@ -62,7 +63,7 @@
                         <div class="tab-content" ng-show="isTabPageActive(1, 1)">
                             <section class="sidebar">
                                 <div class="add-button-container">
-                                    <button class="add-button" ng-click="showAdvanced($event)">
+                                    <button class="add-button main-button" ng-click="showAdvanced($event)">
                                         <image src="./assets/plus_icon.png" alt="Logo">
                                     </button>
                                     New Program
@@ -405,9 +406,9 @@
             </div>
         </div>
 
-        <script type="text/ng-template" id="newProgramDialog.tmpl.html"><md-dialog  aria-label="New Program">
+        <script type="text/ng-template" id="newProgramDialog.tmpl.html"><md-dialog layout-align-md aria-label="New Program">
             <form ng-cloak>
-                <md-toolbar class="md-primary md-hue-1">
+                <md-toolbar class="md-primary md-hue-3">
                     <div class="md-toolbar-tools">
                         <h2 class="md-primary">Create a new program</h2>
                         <span flex></span>
@@ -424,7 +425,7 @@
                         </md-input-container>
                         
                         <fieldset class="md-block">
-                            <legend>Program type</legend>
+                            <legend class="md-caption">Program type</legend>
                             <md-radio-group ng-model="selectedProgramType">
                                 <md-radio-button class="md-primary" ng-repeat="type in programTypes" ng-value="type.value">{{ type.label }}</md-radio-button>
                             </md-radio-group>
@@ -437,7 +438,7 @@
                         </md-input-container>
                                              
                         <fieldset class="md-block">
-                            <legend>Program shown on</legend>
+                            <legend class="md-caption">Program shown on</legend>
                             <div  ng-repeat="tab in allTabs">
                                 <md-checkbox class="md-primary" ng-checked="exists(tab, selectedTabs)" ng-click="toggle(tab, selectedTabs)">
                                 {{ tab }}
@@ -455,7 +456,7 @@
                     <md-button ng-click="cancel()">
                     Cancel
                     </md-button>
-                    <md-button class="md-raised md-primary" ng-click="answer('useful')">
+                    <md-button class="md-raised main-button" ng-click="answer('useful')">
                     Create
                     </md-button>
                 </md-dialog-actions>

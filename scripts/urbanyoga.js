@@ -4,32 +4,28 @@
     var app = angular.module('UrbanYogaApp', ['ngMaterial']);
 
     app.config(function ($mdThemingProvider) {
-      // Extend light-green palette
-      var customLightGreen = $mdThemingProvider.extendPalette('light-green', {
-        'A100': '#ecf7f2',
-        '800' : '#5f6865',
-        '300': '#bad69d',
-        '500': '#709582'
-      });
-
-      // Register the new color palette map with the name <code>neonRed</code>
-      $mdThemingProvider.definePalette('custom-light-green', customLightGreen);
-            $mdThemingProvider.theme('default')
-              .primaryPalette('custom-light-green')
-              .accentPalette('blue-grey');
+        // Extend light-green palette
+        var customLightGreen = $mdThemingProvider.extendPalette('light-green', {
+            'A100': '#ecf7f2',
+            '800': '#5f6865',
+            '300': '#bad69d',
+            '500': '#709582'
         });
 
-    app.controller('UrbanYogaController', UrbanYogaController);
-    UrbanYogaController.$inject = ['$scope', '$mdDialog'];
+        // Register the new color palette map with the name <code>neonRed</code>
+        $mdThemingProvider.definePalette('custom-light-green', customLightGreen);
+        $mdThemingProvider.theme('default')
+          .primaryPalette('custom-light-green')
+          .accentPalette('blue-grey');
+    });
 
-    function UrbanYogaController($scope, $mdDialog) {
+    app.controller('UrbanYogaController', UrbanYogaController);
+    UrbanYogaController.$inject = ['$scope', '$http', '$mdDialog'];
+
+    function UrbanYogaController($scope, $http, $mdDialog) {
         $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes.
         $scope.tileDetailsExpanded = { 0: true };
         $scope.navBarOpen = false;
-        $scope.dashboardTiles = [ 
-          { id: 0, title: "Yoga Classes"}, 
-          { id: 1, title: "Yoga Privates"}, 
-          { id: 2, title: "Yoga Duets"}];
 
         // Set a new tabpage to be active. 
         $scope.setActiveTabPage = function (tabControlId, tabIndex) {
@@ -72,6 +68,48 @@
             });
         };
 
+        $scope.model = { TabledPrograms: {}, TiledPrograms: {} };
+        $scope.loadProgramData = function () {
+            $http.get('https://api.myjson.com/bins/5bdb3').success(function (response) {
+                // Assume valid data as directed by assignment
+                // Note: we would need a more sophisticated model for updates etc. 
+                var tabledPrograms = {};
+                if (response && response.length) {
+                    for (var i = 0; i < response.length; i++) {
+                        var line = response[i];
+                        line["PricingOptions"] = {};
+                        tabledPrograms[line.ProgramID] = line;
+                    }
+                }
+                
+                var tiledPrograms = {};
+                $http.get('https://api.myjson.com/bins/17oy7').success(function (response) {
+                    if (response && response.length) {
+                        for (var i = 0; i < response.length; i++) {
+                            var line = response[i];
+                            var programID = line.ProgramID;
+                            delete line["ProgramID"];
+                            
+                            var program = tiledPrograms[programID];
+                            if(!program) {
+                              program = tabledPrograms[programID];
+                              delete tabledPrograms[programID];
+                            }
+                            
+                            program.PricingOptions[line.PricingOptionID] = line;     
+                            tiledPrograms[programID] = program;
+                        }
+                    }
+
+                    $scope.model.TabledPrograms = tabledPrograms;
+                    $scope.model.TiledPrograms = tiledPrograms;
+                });
+                
+            });
+        };
+
+        $scope.loadProgramData();
+
         function DialogController($scope, $mdDialog) {
             $scope.hide = function () {
                 $mdDialog.hide();
@@ -91,7 +129,7 @@
             $scope.programTypes = [
               { label: 'Count Series', value: 1 },
               { label: 'Time Series', value: 2 },
-              { label: 'Membership', value: '3'},
+              { label: 'Membership', value: '3' },
             ];
 
             $scope.defaultCapacity = 40;
@@ -105,13 +143,13 @@
             ];
 
             $scope.toggle = function (item, list) {
-              var idx = list.indexOf(item);
-              if (idx > -1) {
-                  list.splice(idx, 1);
-              }
-              else {
-                  list.push(item);
-              }
+                var idx = list.indexOf(item);
+                if (idx > -1) {
+                    list.splice(idx, 1);
+                }
+                else {
+                    list.push(item);
+                }
             };
 
             $scope.exists = function (item, list) {

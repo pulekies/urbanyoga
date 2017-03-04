@@ -69,9 +69,9 @@
                                     New Program
                                 </div>
                             </section><section class="main-content">
-                                <div ng-repeat="tile in dashboardTiles" class="dashboard-tile">
+                                <div ng-repeat="program in model.TiledPrograms" class="dashboard-tile">
                                     <header>
-                                        <span class="card-header">{{ tile.title }}</span>
+                                        <span class="card-header">{{ program.Name }}</span>
                                         <button class='edit-button' title="Edit"></button>
                                         <div class="clear-helper"></div>
                                     </header>                                    
@@ -91,14 +91,13 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Sales</td>
-                                                    <td>$23,483</td>
-                                                    <td>
-                                                        <img src="./assets/spark_line.png" alt="Spark line"></td>
+                                                    <td>${{ program.TotalMonthlySales }}</td>
+                                                    <td><img src="./assets/spark_line.png" alt="Spark line"></td>
                                                 </tr>
                                             </tbody>
                                         </table>  
                                     </div>                                
-                                    <table ng-show="tileDetailsExpanded[tile.id]" class="details-table">
+                                    <table ng-show="tileDetailsExpanded[$index]" class="details-table">
                                         <thead>
                                             <tr>
                                                 <th>Price Name</th>
@@ -107,45 +106,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Monthly unlimited</td>
-                                                <td>$4,260</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Student 1 month pass</td>
-                                                <td>$1,750</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Single Visit</td>
-                                                <td>$560</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>10 class pass</td>
-                                                <td>$475</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Student Single pass</td>
-                                                <td>$445</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>20 class pass</td>
-                                                <td>$230</td>
-                                                <td><div class="spark-lines" title="spark line"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5 class pass</td>
-                                                <td>$520</td>
+                                            <tr data-ng-repeat="pricingOption in program.PricingOptions">
+                                                <td>{{pricingOption.Name}}</td>
+                                                <td>${{pricingOption.Sales}}</td>
                                                 <td><div class="spark-lines" title="spark line"></div></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href ng-click="toggleCardDetails(tile.id)">{{ tileDetailsExpanded[tile.id] ? "less" : "more" }}</a>
+                                    <a href ng-click="toggleCardDetails($index)">{{ tileDetailsExpanded[$index] ? "less" : "more" }}</a>
                                 </div>
+                                <section class="overview-details">
+                                     <table>
+                                         <thead>
+                                             <tr>
+                                                 <th>All Programs</th>
+                                                 <th>Monthly Sales</th>
+                                                 <th>Monthly Attendance</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                             <tr data-ng-repeat="program in model.TabledPrograms">
+                                                 <td>{{ program.Name }}<br><a href="">more</a></td>
+                                                 <td>${{ program.TotalMonthlySales }}</td>
+                                                 <td>{{ program.MonthlyAttendance }} <span>visits</span></td>
+                                             </tr>
+                                         </tbody>
+                                     </table> 
+                                 </section>
                             </section>
                         </div>
                         <div ng-show="isTabPageActive(1, 2)">
@@ -254,7 +241,6 @@
             </form>
             </md-dialog>
         </script>
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>

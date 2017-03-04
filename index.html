@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./styles/urbanyoga.css">
+
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./styles/urbanyoga.css">
     <title>Urban Yoga</title>
 </head>
 <body ng-cloak="" ng-app="UrbanYogaApp">
@@ -59,7 +62,7 @@
                         <div class="tab-content" ng-show="isTabPageActive(1, 1)">
                             <section class="sidebar">
                                 <div class="add-button-container">
-                                    <button class="add-button">
+                                    <button class="add-button" ng-click="showAdvanced($event)">
                                         <image src="./assets/plus_icon.png" alt="Logo">
                                     </button>
                                     New Program
@@ -401,7 +404,72 @@
                 </div>
             </div>
         </div>
-        <script src="node_modules/angular/angular.min.js"></script>
+
+        <script type="text/ng-template" id="newProgramDialog.tmpl.html"><md-dialog  aria-label="New Program">
+            <form ng-cloak>
+                <md-toolbar class="md-primary md-hue-1">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-primary">Create a new program</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon md-svg-src="assets/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                        </md-button-->
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+                    <div class="md-dialog-content">                      
+                        <md-input-container class="md-block">    
+                            <label class="field-label">Program name</label>      
+                            <input>
+                        </md-input-container>
+                        
+                        <fieldset class="md-block">
+                            <legend>Program type</legend>
+                            <md-radio-group ng-model="selectedProgramType">
+                                <md-radio-button class="md-primary" ng-repeat="type in programTypes" ng-value="type.value">{{ type.label }}</md-radio-button>
+                            </md-radio-group>
+                        </fieldset><br>
+
+        
+                        <md-input-container class="md-block"> 
+                            <label class="field-label">Default capacity</label>
+                            <input type="number" step="any" min="0" ng-model="defaultCapacity">
+                        </md-input-container>
+                                             
+                        <fieldset class="md-block">
+                            <legend>Program shown on</legend>
+                            <div  ng-repeat="tab in allTabs">
+                                <md-checkbox class="md-primary" ng-checked="exists(tab, selectedTabs)" ng-click="toggle(tab, selectedTabs)">
+                                {{ tab }}
+                                </md-checkbox>
+                            </div>
+                        </fieldset><br>
+
+                        <md-checkbox class="md-primary" ng-model="onlineSchedulingAllowed">
+                        Online sheduling allowed
+                        </md-checkbox>
+                    </div>
+                </md-dialog-content>
+                <md-dialog-actions layout="row">
+                    <span flex></span>
+                    <md-button ng-click="cancel()">
+                    Cancel
+                    </md-button>
+                    <md-button class="md-raised md-primary" ng-click="answer('useful')">
+                    Create
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+            </md-dialog>
+        </script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>      
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
         <script src="scripts/urbanyoga.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 html, body {
     margin: 0;
     min-height: 100%;
+    height: initial;
+    background: initial;
 }
 
 body {  
@@ -429,3 +431,31 @@ tr {
 .clear-helper {
     clear: both;
 }
+
+
+/*************************** Angular materials overrides ***************************/
+
+md-dialog md-input-container {
+    margin-bottom: 0;
+}
+
+fieldset md-checkbox, fieldset md-radio-button {
+    margin-bottom: 5px;
+}
+
+.field-label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/*
+.md-dialog-container {
+    padding-top: 100px;
+    webkit-align-items: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+}*/
+
+/*************************** Angular materials overrides ***************************/

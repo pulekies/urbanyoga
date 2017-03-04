@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/pulekies/urbanyoga#readme",
   "dependencies": {
-    "angular": "^1.5.10"
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-material": "^1.1.1"
   }
 }

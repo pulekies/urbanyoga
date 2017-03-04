@@ -5,10 +5,10 @@ html, body {
     background: initial;
 }
 
-body {  
+body {
     position: relative;
-    background-color: #F2F2EC;  
-    background-color: lightgray; 
+    background-color: #F2F2EC;
+    background-color: lightgray;
 
     background-image: radial-gradient(#f4f4ee,#e0e0ca);
 
@@ -23,7 +23,7 @@ body {
     padding: 20px;
     display: block;
     background-color: #ecf7f2;
-    box-shadow: inset 0 -6px 6px -6px #9bc58a;     
+    box-shadow: inset 0 -6px 6px -6px #9bc58a;
 }
 
 header.in-progress-header {
@@ -210,7 +210,7 @@ tr {
 .sidebar {
     padding-left: 80px;
     padding-right: 45px;
-    vertical-align: top; 
+    vertical-align: top;
     display: inline-block;
 }
 
@@ -244,7 +244,7 @@ tr {
     margin-bottom: 10px;
 }
 
-.dashboard-tile > header > span {    
+.dashboard-tile > header > span {
     float:left;
 }
 
@@ -418,12 +418,16 @@ tr {
     padding-top: 15px;
 }
 
-.overview-details th:nth-child(1) { 
+.overview-details th:nth-child(1) {
     font-size: 14px;
 }
 
 .clear-helper {
     clear: both;
+}
+
+md-dialog .md-dialog-content fieldset {
+  min-width: 600px;
 }
 
 md-dialog md-input-container {

@@ -74,7 +74,7 @@
                                         <span class="card-header">{{ program.Name }}</span>
                                         <button class='edit-button' title="Edit"></button>
                                         <div class="clear-helper"></div>
-                                    </header>                                    
+                                    </header>
                                     <figure>
                                         <figcaption>Sales by month</figcaption>
                                         <img src="./assets/graph.png" alt="Graph">
@@ -95,8 +95,8 @@
                                                     <td><img src="./assets/spark_line.png" alt="Spark line"></td>
                                                 </tr>
                                             </tbody>
-                                        </table>  
-                                    </div>                                
+                                        </table>
+                                    </div>
                                     <table ng-show="tileDetailsExpanded[$index]" class="details-table">
                                         <thead>
                                             <tr>
@@ -131,7 +131,7 @@
                                                  <td>{{ program.MonthlyAttendance }} <span>visits</span></td>
                                              </tr>
                                          </tbody>
-                                     </table> 
+                                     </table>
                                  </section>
                             </section>
                         </div>
@@ -188,7 +188,7 @@
             <form ng-cloak>
                 <md-toolbar class="md-primary md-hue-3">
                     <div class="md-toolbar-tools">
-                        <h2 class="md-primary">Create a new program</h2>
+                        <h2 class="md-primary">Create new program</h2>
                         <span flex></span>
                         <md-button class="md-icon-button" ng-click="cancel()">
                             <md-icon md-svg-src="assets/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -196,12 +196,12 @@
                     </div>
                 </md-toolbar>
                 <md-dialog-content>
-                    <div class="md-dialog-content">                      
-                        <md-input-container class="md-block">    
-                            <label class="field-label">Program name</label>      
+                    <div class="md-dialog-content">
+                        <md-input-container class="md-block">
+                            <label class="field-label">Program name</label>
                             <input>
                         </md-input-container>
-                        
+
                         <fieldset class="md-block">
                             <legend class="md-caption">Program type</legend>
                             <md-radio-group ng-model="selectedProgramType">
@@ -209,12 +209,12 @@
                             </md-radio-group>
                         </fieldset><br>
 
-        
-                        <md-input-container class="md-block"> 
+
+                        <md-input-container class="md-block">
                             <label class="field-label">Default capacity</label>
                             <input type="number" step="any" min="0" ng-model="defaultCapacity">
                         </md-input-container>
-                                             
+
                         <fieldset class="md-block">
                             <legend class="md-caption">Program shown on</legend>
                             <div  ng-repeat="tab in allTabs">
@@ -228,16 +228,16 @@
                         Online sheduling allowed
                         </md-checkbox>
                     </div>
+                    <md-dialog-actions layout="row">
+                        <span flex></span>
+                        <md-button ng-click="cancel()">
+                        Cancel
+                        </md-button>
+                        <md-button class="md-raised main-button" ng-click="answer('useful')">
+                        Create
+                        </md-button>
+                    </md-dialog-actions>
                 </md-dialog-content>
-                <md-dialog-actions layout="row">
-                    <span flex></span>
-                    <md-button ng-click="cancel()">
-                    Cancel
-                    </md-button>
-                    <md-button class="md-raised main-button" ng-click="answer('useful')">
-                    Create
-                    </md-button>
-                </md-dialog-actions>
             </form>
             </md-dialog>
         </script>
@@ -245,7 +245,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>      
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
         <script src="scripts/urbanyoga.js"></script>

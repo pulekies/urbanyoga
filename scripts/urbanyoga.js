@@ -20,14 +20,14 @@
     });
 
     app.controller('UrbanYogaController', UrbanYogaController);
-    UrbanYogaController.$inject = ['$scope', '$http', '$mdDialog'];
+    UrbanYogaController.$inject = ['$scope', '$filter', '$http', '$mdDialog'];
 
-    function UrbanYogaController($scope, $http, $mdDialog) {
+    function UrbanYogaController($scope, $filter, $http, $mdDialog) {
         $scope.activeTabs = { 1: 1 } // initialize the second tab to be open on the dashboard for demo purposes.
         $scope.tileDetailsExpanded = { 0: true };
         $scope.navBarOpen = false;
 
-        // Set a new tabpage to be active. 
+        // Set a new tabpage to be active.
         $scope.setActiveTabPage = function (tabControlId, tabIndex) {
             $scope.activeTabs[tabControlId] = tabIndex;
             $scope.navBarOpen = false; // close the navbar if it is open
@@ -47,7 +47,7 @@
             $scope.tileDetailsExpanded[cardId] = !$scope.tileDetailsExpanded[cardId];
         };
 
-        // Toggle the responsive navbar open/close state.  
+        // Toggle the responsive navbar open/close state.
         $scope.toggleResponsiveNav = function () {
             $scope.navBarOpen = !$scope.navBarOpen;
         }
@@ -72,7 +72,7 @@
         $scope.loadProgramData = function () {
             $http.get('https://api.myjson.com/bins/5bdb3').success(function (response) {
                 // Assume valid data as directed by assignment
-                // Note: we would need a more sophisticated model for updates etc. 
+                // Note: we would need a more sophisticated model for updates etc.
                 var tabledPrograms = {};
                 if (response && response.length) {
                     for (var i = 0; i < response.length; i++) {
@@ -81,7 +81,7 @@
                         tabledPrograms[line.ProgramID] = line;
                     }
                 }
-                
+
                 var tiledPrograms = {};
                 $http.get('https://api.myjson.com/bins/17oy7').success(function (response) {
                     if (response && response.length) {
@@ -89,14 +89,14 @@
                             var line = response[i];
                             var programID = line.ProgramID;
                             delete line["ProgramID"];
-                            
+
                             var program = tiledPrograms[programID];
                             if(!program) {
                               program = tabledPrograms[programID];
                               delete tabledPrograms[programID];
                             }
-                            
-                            program.PricingOptions[line.PricingOptionID] = line;     
+
+                            program.PricingOptions[line.PricingOptionID] = line;
                             tiledPrograms[programID] = program;
                         }
                     }
@@ -104,7 +104,7 @@
                     $scope.model.TabledPrograms = tabledPrograms;
                     $scope.model.TiledPrograms = tiledPrograms;
                 });
-                
+
             });
         };
 

@@ -127,6 +127,7 @@
                                          <tbody>
                                              <tr data-ng-repeat="program in model.TabledPrograms">
                                                  <td>{{ program.Name }}<br><a href="">more</a></td>
+                                                 <td>{{ program.TotalMonthlySales | currency : '$' : 2 }}</td>
                                                  <td>{{ program.MonthlyAttendance }} <span>visits</span></td>
                                              </tr>
                                          </tbody>

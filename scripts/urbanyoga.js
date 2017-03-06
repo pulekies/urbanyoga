@@ -12,7 +12,7 @@
             '500': '#709582'
         });
 
-        // Register the new color palette map with the name <code>neonRed</code>
+        // Register the new color palette map
         $mdThemingProvider.definePalette('custom-light-green', customLightGreen);
         $mdThemingProvider.theme('default')
           .primaryPalette('custom-light-green')
@@ -52,7 +52,7 @@
             $scope.navBarOpen = !$scope.navBarOpen;
         }
 
-        $scope.showAdvanced = function (ev) {
+        $scope.showNewProgramDialog = function (ev) {
             $mdDialog.show({
                 controller: DialogController,
                 templateUrl: 'newProgramDialog.tmpl.html',
@@ -60,11 +60,6 @@
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 fullscreen: true,
-            })
-            .then(function (answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function () {
-                $scope.status = 'You cancelled the dialog.';
             });
         };
 
@@ -119,8 +114,8 @@
                 $mdDialog.cancel();
             };
 
-            $scope.answer = function (answer) {
-                $mdDialog.hide(answer);
+            $scope.createProgram = function () {
+                $mdDialog.hide();
             };
 
             $scope.onlineSchedulingAllowed = true;
@@ -132,6 +127,7 @@
               { label: 'Membership', value: '3' },
             ];
 
+            $scope.defaultProgramName = "Program(1)";
             $scope.defaultCapacity = 40;
             $scope.selectedTabs = [];
             $scope.allTabs = ['Classes',

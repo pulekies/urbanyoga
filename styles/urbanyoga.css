@@ -1,20 +1,19 @@
 html, body {
     margin: 0;
     min-height: 100%;
-    height: initial;
-    background: initial;
+    height: auto;
+}
+
+html {
+    background-color: transparent;
 }
 
 body {
     position: relative;
     background-color: #F2F2EC;
-    background-color: lightgray;
-
     background-image: radial-gradient(#f4f4ee,#e0e0ca);
-
     background-position:center;
     background-attachment: fixed;
-
     font-family: Roboto;
 }
 
@@ -42,13 +41,12 @@ header h1 {
     margin: 0;
 }
 
-tr {
+th, td {
     text-align: left;
 }
 
 .menubar-container {
     display: block;
-
 }
 
 .menubar {
@@ -151,7 +149,6 @@ tr {
   ul.navbar.responsive li:first-child {
     margin-top: 40px;
   }
-
 }
 
 .menubar li a {

@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-
     <link rel="stylesheet" type="text/css" href="./styles/urbanyoga.css">
     <title>Urban Yoga</title>
 </head>
@@ -14,30 +12,27 @@
     <header class='site-header md-hue-3'>
         <image src="./assets/logo.png" alt="Logo">
     </header>
-
     <div ng-controller="UrbanYogaController">
-        <div>
-            <div class='menubar-container navbar-container'>
-                <ul class='menubar navbar' ng-class="{ responsive: navBarOpen }">
-                    <li ng-class="{ active: isTabPageActive(0, 0) }">
-                        <a href ng-click="setActiveTabPage(0, 0)">Dashboard</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 1) }">
-                        <a href ng-click="setActiveTabPage(0, 1)">Sign in</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 2) }">
-                        <a href ng-click="setActiveTabPage(0, 2)">Classes</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 3) }">
-                        <a href ng-click="setActiveTabPage(0, 3)">Workshops</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 4) }">
-                        <a href ng-click="setActiveTabPage(0, 4)">Appointments</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 5) }">
-                        <a href ng-click="setActiveTabPage(0, 5)">Client Home</a>
-                    </li><li ng-class="{ active: isTabPageActive(0, 6) }">
-                        <a href ng-click="setActiveTabPage(0, 6)">Retail</a>
-                    </li><li class="icon">
-                        <a href ng-click="toggleResponsiveNav()">&#9776;</a>
-                    </li>
-                </ul>
-            </div>
+        <div class='menubar-container navbar-container'>
+            <ul class='menubar navbar' ng-class="{ responsive: navBarOpen }">
+                <li ng-class="{ active: isTabPageActive(0, 0) }">
+                    <a href ng-click="setActiveTabPage(0, 0)">Dashboard</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 1) }">
+                    <a href ng-click="setActiveTabPage(0, 1)">Sign in</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 2) }">
+                    <a href ng-click="setActiveTabPage(0, 2)">Classes</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 3) }">
+                    <a href ng-click="setActiveTabPage(0, 3)">Workshops</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 4) }">
+                    <a href ng-click="setActiveTabPage(0, 4)">Appointments</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 5) }">
+                    <a href ng-click="setActiveTabPage(0, 5)">Client Home</a>
+                </li><li ng-class="{ active: isTabPageActive(0, 6) }">
+                    <a href ng-click="setActiveTabPage(0, 6)">Retail</a>
+                </li><li class="icon">
+                    <a href ng-click="toggleResponsiveNav()">&#9776;</a>
+                </li>
+            </ul>
         </div>
         <div>
             <div>
@@ -63,7 +58,7 @@
                         <div class="tab-content" ng-show="isTabPageActive(1, 1)">
                             <section class="sidebar">
                                 <div class="add-button-container">
-                                    <button class="add-button main-button" ng-click="showAdvanced($event)">
+                                    <button class="add-button main-button" ng-click="showNewProgramDialog($event)">
                                         <image src="./assets/plus_icon.png" alt="Logo">
                                     </button>
                                     New Program
@@ -199,22 +194,18 @@
                     <div class="md-dialog-content">
                         <md-input-container class="md-block">
                             <label class="field-label">Program name</label>
-                            <input>
+                            <input ng-model="defaultProgramName">
                         </md-input-container>
-
                         <fieldset class="md-block">
                             <legend class="md-caption">Program type</legend>
                             <md-radio-group ng-model="selectedProgramType">
                                 <md-radio-button class="md-primary" ng-repeat="type in programTypes" ng-value="type.value">{{ type.label }}</md-radio-button>
                             </md-radio-group>
                         </fieldset><br>
-
-
                         <md-input-container class="md-block">
                             <label class="field-label">Default capacity</label>
                             <input type="number" step="any" min="0" ng-model="defaultCapacity">
                         </md-input-container>
-
                         <fieldset class="md-block">
                             <legend class="md-caption">Program shown on</legend>
                             <div  ng-repeat="tab in allTabs">
@@ -223,7 +214,6 @@
                                 </md-checkbox>
                             </div>
                         </fieldset><br>
-
                         <md-checkbox class="md-primary" ng-model="onlineSchedulingAllowed">
                         Online sheduling allowed
                         </md-checkbox>
@@ -233,7 +223,7 @@
                         <md-button ng-click="cancel()">
                         Cancel
                         </md-button>
-                        <md-button class="md-raised main-button" ng-click="answer('useful')">
+                        <md-button class="md-raised main-button" ng-click="createProgram()">
                         Create
                         </md-button>
                     </md-dialog-actions>
@@ -241,13 +231,11 @@
             </form>
             </md-dialog>
         </script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-
         <script src="scripts/urbanyoga.js"></script>
 </body>
 </html>
